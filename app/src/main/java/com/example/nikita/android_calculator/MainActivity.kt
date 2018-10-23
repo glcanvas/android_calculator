@@ -37,11 +37,20 @@ class MainActivity : AppCompatActivity() {
                         textView.setSelection(textView.text.toString().length)
                     }
                     "√" -> {
-                        val result =
-                            insertBetween(
-                                textView.text.toString(), "*sqrt(",
-                                textView.selectionStart, textView.selectionEnd
-                            )
+                        val startPoint = textView.selectionStart
+                        val endPoint = textView.selectionEnd
+                        var innerString = "sqrt("
+                        val text = textView.text.toString()
+                        if (startPoint != 0) {
+                            if (text[startPoint - 1] != '(') {
+                                innerString = "*$innerString";
+                            }
+                        }
+                        val result = insertBetween(
+                            text, innerString,
+                            startPoint, endPoint
+                        )
+
                         textView.text = Editable.Factory.getInstance().newEditable(result.first)
                         textView.setSelection(result.second)
                     }
