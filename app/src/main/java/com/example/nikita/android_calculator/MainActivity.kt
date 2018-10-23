@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
                     "=" -> {
                         val result = Expression(currentEditText).calculate()
                         if ((result as Number) == Double.NaN) {
-                            textView.text = Editable.Factory.getInstance().newEditable("$currentEditText=Error")
+                            textView.text = Editable.Factory.getInstance().newEditable("Error")
                         } else {
-                            textView.text = Editable.Factory.getInstance().newEditable("$currentEditText=$result")
+                            textView.text = Editable.Factory.getInstance().newEditable("$result")
                         }
                         textView.setSelection(textView.text.toString().length)
                     }
