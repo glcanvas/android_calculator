@@ -3,12 +3,11 @@ package com.example.nikita.android_calculator
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import kotlinx.android.synthetic.main.activity_main.*
 
-import  org.mariuszgromada.math.mxparser.*;
+import  org.mariuszgromada.math.mxparser.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val textView = findViewById<EditText>(R.id.resultText)
+        val textView = resultText
         val savedSate = savedInstanceState?.getString("resultText") ?: "0"
         textView.text = Editable.Factory.getInstance().newEditable(savedSate)
         textView.showSoftInputOnFocus = false
